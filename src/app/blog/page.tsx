@@ -20,7 +20,7 @@ export default async function BlogPost() {
           </h1>
         </div>
         <p className="p-2 text-lg ">
-          Du hast auf diesen Link geklickt, sehr cool von dir!
+          Sehr witzig, falls das wirklich jemand liest
         </p>
         <ol className="mt-6 flex flex-col divide-y divide-white/30 md:divide-none">
           {allPosts.map((post) => (
