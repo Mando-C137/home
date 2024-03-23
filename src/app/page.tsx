@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-2 px-4 py-8 md:gap-12 md:py-16 ">
       <h1
-        className={` bg-gradient-to-r from-cyberblue   via-cyberpink to-cyberviolet bg-clip-text py-2 text-3xl  font-bold   text-transparent lg:text-5xl`}
+        className={`bg-gradient-to-r from-cyberblue   via-cyberpink to-cyberviolet bg-clip-text py-2 text-3xl  font-bold   text-transparent lg:text-5xl`}
       >
         <span
           className={`${driveFont.variable} ${driveFont.className} font-medium`}
