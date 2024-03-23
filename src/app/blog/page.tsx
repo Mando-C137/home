@@ -10,11 +10,19 @@ export default async function BlogPost() {
 
   return (
     <div className="mt-12">
-      <div className="">
-        <h1 className="text-2xl tracking-tighter md:mb-4 md:text-3xl">
-          Dumb thoughts:
-        </h1>
-        <ol className="flex flex-col gap-[1px] ">
+      <div>
+        <div className="flex items-center justify-center pb-8 md:pb-10">
+          <h1
+            className="bg-gradient-to-r from-cyberblue via-cyberpink to-cyberviolet  bg-clip-text text-center 
+          text-4xl font-bold tracking-tighter text-transparent md:mb-4 md:text-4xl"
+          >
+            Paulhe (me.)
+          </h1>
+        </div>
+        <p className="p-2 text-lg ">
+          Du hast auf diesen Link geklickt, sehr cool von dir!
+        </p>
+        <ol className="mt-6 flex flex-col divide-y divide-white/30 md:divide-none">
           {allPosts.map((post) => (
             <BlogListElement key={post.slug} post={post} />
           ))}
@@ -29,29 +37,22 @@ function BlogListElement({
 }: {
   post: Awaited<ReturnType<typeof getBlogPosts>>[number];
 }) {
-  const tags = post.metadata.tags;
   return (
-    <li className="relative bg-slate-900 p-2 first:rounded-t-md last:rounded-b-md md:p-4">
+    <li className="relative flex flex-col gap-0 p-2 py-6 pt-4  first:pt-0 md:p-4 md:py-10">
       <Link
         href={`/blog/${post.slug}`}
-        className="text-lg tracking-tight hover:text-slate-50 hover:underline md:text-xl"
+        className="text-xl tracking-tight hover:text-slate-50 hover:underline md:text-2xl"
       >
         {post.metadata.title}
       </Link>
-      {/*       <div>
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="min-w-10 rounded-full border-2 border-slate-300  px-2 text-sm font-medium text-slate-300 md:text-base"
-          >
-            {tag}
-          </span>
-        ))}
-      </div> */}
       <DateInfo
+        withIcon={false}
         dateStr={post.metadata.createdAt}
-        className="mt-4 flex items-center gap-2 text-sm"
-      ></DateInfo>
+        className="flex  items-center gap-1 py-1 text-sm text-white/40 md:text-lg"
+      />
+      <p className="pt-2 text-sm text-white/75 md:text-lg">
+        {post.metadata.summary}
+      </p>
     </li>
   );
 }

@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`relative font-sans ${inter.variable} mx-4 min-h-screen bg-current bg-gradient-to-b from-slate-950  to-slate-900 text-white `}
+        className={`relative font-sans ${inter.variable} mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950  to-zinc-900 text-white `}
       >
         <header className="static top-0 mx-auto flex w-full max-w-5xl justify-between pt-4 text-sm md:sticky md:text-base md:backdrop-blur">
           <Link
