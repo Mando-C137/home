@@ -42,7 +42,7 @@ function Header({
       <h1 className="mb-1   text-3xl md:mb-2">{metadata.title}</h1>
       <div className="flex items-center gap-2  text-white/40 ">
         <Persona className="h-4 w-4 md:h-5 md:w-5 " />
-        Paul Heisner
+        Paul He
       </div>
       <DateInfo
         withIcon={true}

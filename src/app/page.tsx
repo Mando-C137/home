@@ -18,9 +18,12 @@ export default function HomePage() {
       <div className="flex w-full  min-w-full  flex-col  gap-0 text-sm md:flex-row md:justify-between  md:gap-4">
         <div className="flex flex-col gap-0 p-2 text-sm md:gap-2 md:p-4 md:text-base ">
           <p>
-            You know me. Literally me. <br />
-            <span className="font-bold">Software dev</span> and{" "}
-            <span className="font-bold">passionate weightlifter</span>
+            Literally me. <br />
+            <span className="font-bold first-letter:uppercase ">Software</span>
+            {", "}
+            <span className="font-bold first-letter:uppercase">Weights</span>
+            {" and "}
+            <span className="font-bold first-letter:uppercase">Economy</span>
             .<br />
             This is my homepage.
           </p>
