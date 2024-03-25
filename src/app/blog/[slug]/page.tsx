@@ -1,13 +1,32 @@
 import React, { type SVGProps } from "react";
 import { notFound } from "next/navigation";
 import { getBlogPost, getBlogPosts } from "../../../server/utils";
-import DateInfo from "../../../components/ClientDateInfo";
+import DateInfo from "@components/ClientDateInfo";
+import { type Metadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = params.slug;
+  const blogpost = await getBlogPostCached(slug);
+  if (blogpost === "notFound") {
+    return notFound();
+  }
+  return {
+    title: blogpost.metadata.title,
+    keywords: blogpost.metadata.tags.join(", "),
+    description: blogpost.metadata.summary,
+  };
+}
+
 export default async function Blog({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  const post = await getBlogPost(slug);
+  const post = await getBlogPostCached(slug);
   if (post === "notFound") {
     return notFound();
   }
@@ -93,3 +112,5 @@ function Hashtag(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+const getBlogPostCached = React.cache(getBlogPost);

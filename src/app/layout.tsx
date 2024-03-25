@@ -2,17 +2,34 @@ import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import driveFont from "../components/font/driveFont";
+import driveFont from "@components/font/driveFont";
+import { type Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const metadata = {
-  title: "Paul He",
-  description: "Pauls Trashablage",
+export const metadata: Metadata = {
+  description: "Literally me",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  metadataBase: new URL("https://paulhe.de"),
+  title: {
+    default: "Paul He",
+    template: "%s | Paul He",
+  },
+  openGraph: {
+    title: "Paul He ",
+    description: "Literally me",
+    url: "https://paulhe.de",
+    siteName: "Paul He",
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    title: "Paul He",
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
