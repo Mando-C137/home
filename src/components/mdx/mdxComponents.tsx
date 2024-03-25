@@ -1,5 +1,5 @@
 import { type MDXRemoteProps } from "next-mdx-remote";
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 import {
   type DetailedHTMLProps,
@@ -8,11 +8,11 @@ import {
   type PropsWithChildren,
 } from "react";
 
-export const components: MDXRemoteProps["components"] = {
+export const components = {
   TwoGrid: ({ children }: PropsWithChildren) => (
     <div className="grid grid-cols-1 gap-2  md:grid-cols-2">{children}</div>
   ),
-  Image: (props) => <Image {...props} />,
+  Image: (props: ImageProps) => <Image {...props} alt={props.alt} />,
   a: (
     props: Omit<
       DetailedHTMLProps<
@@ -43,7 +43,7 @@ export const components: MDXRemoteProps["components"] = {
       </Link>
     );
   },
-};
+} satisfies MDXRemoteProps["components"];
 
 function SoundcloudSVG(props: SVGProps<SVGSVGElement>) {
   return (

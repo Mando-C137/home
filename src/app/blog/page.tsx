@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { getBlogPosts } from "../../server/utils";
-import DateInfo from "../../components/ClientDateInfo";
+import DateInfo from "@components/ClientDateInfo";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
 
 export default async function BlogPost() {
   const allPosts = (await getBlogPosts()).sort(

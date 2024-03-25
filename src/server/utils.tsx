@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { type PathLike } from "fs";
-import { components } from "../components/mdx/mdxComponents";
+import { components } from "@components/mdx/mdxComponents";
 
 type Metadata = {
   title: string;
