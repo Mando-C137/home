@@ -30,11 +30,21 @@ export default async function Blog({
   if (post === "notFound") {
     return notFound();
   }
+  if (post.metadata.wip) {
+    return (
+      <>
+        <Header metadata={post.metadata} />
+        <section className="prose prose-invert mb-10  pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
+          <article>Ich bin dran</article>
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
       <Header metadata={post.metadata} />
-      <section className="prose prose-invert mb-10 flex flex-col gap-4 pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
+      <section className="prose prose-invert mb-10  pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
         <article>{post.content}</article>
       </section>
     </>
@@ -58,22 +68,24 @@ function Header({
 }) {
   return (
     <div className="relative pt-20">
-      <h1 className="mb-1   text-3xl md:mb-2">{metadata.title}</h1>
-      <div className="flex items-center gap-2  text-white/40 ">
-        <Persona className="h-4 w-4 md:h-5 md:w-5 " />
-        Paul He
-      </div>
-      <DateInfo
-        withIcon={true}
-        dateStr={metadata.createdAt}
-        className="flex items-center gap-2 pt-1 text-white/40"
-      />
-      {metadata.tags.length > 0 && (
-        <div className="flex items-center gap-2 pt-1  text-white/40 ">
-          <Hashtag className="h-4 w-4 md:h-5 md:w-5 " />
-          {metadata.tags.join(", ")}
+      <h1 className="mb-4  text-3xl md:mb-4">{metadata.title}</h1>
+      <div className="space-y-1 pt-4">
+        <div className="flex items-center gap-2  text-white/40 ">
+          <Persona className="h-4 w-4 md:h-5 md:w-5 " />
+          Paul He
         </div>
-      )}
+        <DateInfo
+          withIcon={true}
+          dateStr={metadata.createdAt}
+          className="flex items-center gap-2 pt-1 text-white/40"
+        />
+        {metadata.tags.length > 0 && (
+          <div className="flex items-center gap-2 pt-1  text-white/40 ">
+            <Hashtag className="h-4 w-4 md:h-5 md:w-5 " />
+            {metadata.tags.join(", ")}
+          </div>
+        )}
+      </div>
       {metadata.wip && (
         <span className="span-2 absolute right-0 top-10 rounded-full border-2 border-yellow-400/75 px-2 text-white/80 md:top-14">
           Unfinished

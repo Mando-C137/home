@@ -11,6 +11,7 @@ type Metadata = {
   summary: string;
   tags: string[];
 };
+const POST_FOLDER = "posts";
 
 async function getMDXFiles(dir: PathLike) {
   return (await fs.readdir(dir)).filter(
@@ -47,12 +48,14 @@ async function getMDXData(dir: string) {
 }
 
 export async function getBlogPosts() {
-  return await getMDXData(path.join(process.cwd(), "posts"));
+  return await getMDXData(path.join(process.cwd(), POST_FOLDER));
 }
 
 export async function getBlogPost(slug: string) {
   try {
-    return await readMDXFile(path.join(process.cwd(), "posts", `${slug}.mdx`));
+    return await readMDXFile(
+      path.join(process.cwd(), POST_FOLDER, `${slug}.mdx`),
+    );
   } catch (err) {
     if (err instanceof Error && "code" in err && err.code === "ENOENT") {
       return "notFound" as const;

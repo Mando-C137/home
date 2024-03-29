@@ -50,14 +50,16 @@ function BlogListElement({
       >
         {post.metadata.title}
       </Link>
-      <DateInfo
-        withIcon={false}
-        dateStr={post.metadata.createdAt}
-        className="flex  items-center gap-1 py-1 text-sm text-white/40 md:text-lg"
-      />
-      <p className="pt-2 text-sm text-white/75 md:text-lg">
-        {post.metadata.summary}
-      </p>
+      <div className="mt-2 space-y-2">
+        <DateInfo
+          withIcon={false}
+          dateStr={post.metadata.createdAt}
+          className="flex items-center gap-1 py-1 text-sm text-white/40 md:text-lg"
+        />
+        <p className="text-sm text-white/75 md:text-lg">
+          {post.metadata.summary}
+        </p>
+      </div>
     </li>
   );
 }

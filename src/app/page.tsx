@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import driveFont from "@components/font/driveFont";
+import ImdbIcon from "../components/icons/ImdbIcon";
+import InstagramIcon from "../components/icons/InstagramIcon";
+import GithubIcon from "../components/icons/GithubIcon";
 
 export default function HomePage() {
   return (
@@ -19,12 +22,14 @@ export default function HomePage() {
         <div className="flex flex-col gap-0 p-2 text-sm md:gap-2 md:p-4 md:text-base ">
           <p>
             Literally me. <br />
+            {/*  
             <span className="font-bold first-letter:uppercase ">Software</span>
             {", "}
             <span className="font-bold first-letter:uppercase">Weights</span>
             {" and "}
             <span className="font-bold first-letter:uppercase">Economy</span>
             .<br />
+            */}
             This is my homepage.
           </p>
         </div>
@@ -44,15 +49,14 @@ export default function HomePage() {
         </div>
       </div>
 
-      <footer className="mt-auto text-sm md:text-base">
-        <p className="">Contact my ass</p>
-        <ul className="flex gap-2">
+      <footer className="mt-auto  text-sm md:text-base">
+        <ul className="flex gap-4">
           <li>
             <Link
               href="https://github.com/Mando-C137"
               className="text-cyberblue"
             >
-              Github
+              <GithubIcon className="h-6 fill-current  text-neutral-200" />
             </Link>
           </li>
           <li>
@@ -60,7 +64,7 @@ export default function HomePage() {
               href="https://www.instagram.com/paulhe21/"
               className="text-cyberblue"
             >
-              Gram
+              <InstagramIcon className="h-6 fill-current text-neutral-200" />
             </Link>
           </li>
           <li>
@@ -68,7 +72,7 @@ export default function HomePage() {
               href="https://www.imdb.com/name/nm0331516/?ref_=nv_sr_srsg_2_tt_2_nm_4_q_Ryan"
               className="text-cyberblue"
             >
-              IMDb
+              <ImdbIcon className="h-6 fill-current text-neutral-200" />
             </Link>
           </li>
         </ul>
