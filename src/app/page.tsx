@@ -34,9 +34,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className="mx-auto my-4 md:ml-auto">
-          <div
-            className={`relative h-[422px] w-[292.5px] md:h-[422px] md:w-[292.5px]`}
-          >
+          <div className="relative h-[calc(80vw*1.67)] w-[80vw] md:h-[625px] md:w-[375px] ">
             <Image
               priority
               fill
