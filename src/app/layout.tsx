@@ -35,12 +35,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
+  // eslint-disable-next-line next-route-params/enforce-route-params
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body
-        className={`relative font-sans ${inter.variable} mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950 to-zinc-900 text-white `}
+        className={`relative font-sans ${inter.variable} mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950 to-zinc-900 text-white`}
       >
         <header className="static top-0 mx-auto flex w-full max-w-5xl justify-between pt-4 text-sm md:sticky md:text-base md:backdrop-blur">
           <Link
@@ -56,7 +57,7 @@ export default function RootLayout({
                   Home
                   <span
                     aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue  transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
+                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
                   ></span>
                 </Link>
               </li>
@@ -65,7 +66,7 @@ export default function RootLayout({
                   Blog
                   <span
                     aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue  transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
+                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
                   ></span>
                 </Link>
               </li>
@@ -74,14 +75,14 @@ export default function RootLayout({
                   About
                   <span
                     aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue  transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
+                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
                   ></span>
                 </Link>
               </li>
             </ul>
           </nav>
         </header>
-        <main className="mx-auto  px-2 text-white md:max-w-3xl  md:px-0">
+        <main className="mx-auto px-2 text-white md:max-w-3xl md:px-0">
           {children}
         </main>
       </body>

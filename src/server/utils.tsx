@@ -3,6 +3,9 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { type PathLike } from "fs";
 import { components } from "@components/mdx/mdxComponents";
+import rehype from "rehype-highlight";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 
 type Metadata = {
   title: string;
@@ -28,6 +31,10 @@ async function readMDXFile(filePath: string) {
     },
     options: {
       parseFrontmatter: true,
+      mdxOptions: {
+        rehypePlugins: [{ plugins: [rehype, rehypeSlug] }],
+        remarkPlugins: [remarkGfm],
+      },
     },
   });
   return { content, metadata };
