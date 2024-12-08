@@ -6,11 +6,13 @@ import { type Metadata } from "next";
 import "~/styles/atom-one-dark.css";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{
+    slug: string;
+  }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug;
+  const slug = (await params).slug;
   const blogpost = await getBlogPostCached(slug);
   if (blogpost === "notFound") {
     return notFound();
@@ -23,11 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Blog({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{
+    slug: string;
+  }>;
 }) {
-  const post = await getBlogPostCached(slug);
+  const post = await getBlogPostCached((await params).slug);
   if (post === "notFound") {
     return notFound();
   }

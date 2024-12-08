@@ -15,6 +15,15 @@ const config = {
       },
     ],
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/blog/brometrics",
+        destination: "https://bro-metrics.vercel.app",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default config;
