@@ -10,6 +10,7 @@ import rehypeSlug from "rehype-slug";
 type Metadata = {
   title: string;
   createdAt: string;
+  updatedAt?: string;
   wip: boolean;
   summary: string;
   tags: string[];
@@ -55,7 +56,9 @@ async function getMDXData(dir: string) {
 }
 
 export async function getBlogPosts() {
-  return await getMDXData(path.join(process.cwd(), POST_FOLDER));
+  return (await getMDXData(path.join(process.cwd(), POST_FOLDER))).filter(
+    (val) => !val.metadata.wip,
+  );
 }
 
 export async function getBlogPost(slug: string) {

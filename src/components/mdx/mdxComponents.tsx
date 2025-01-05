@@ -27,7 +27,9 @@ export const components = {
     }
     const isSpotifyLink = /^https?:\/\/open\.spotify\.com/.test(props.href);
     const isGithubLink = /^https?:\/\/github\.com/.test(props.href);
-    const isSoundCloudLink = /^https?:\/\/soundcloud\.com/.test(props.href);
+    const isSoundCloudLink = /^https?:\/\/www\.soundcloud\.com/.test(
+      props.href,
+    );
 
     return (
       <Link

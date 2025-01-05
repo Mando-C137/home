@@ -32,7 +32,7 @@ export default async function Blog({
   }>;
 }) {
   const post = await getBlogPostCached((await params).slug);
-  if (post === "notFound") {
+  if (post === "notFound" || post.metadata.wip) {
     return notFound();
   }
   if (post.metadata.wip) {
@@ -88,6 +88,14 @@ function Header({
           dateStr={metadata.createdAt}
           className="flex items-center gap-2 pt-1 text-white/40"
         />
+        {metadata.updatedAt && (
+          <DateInfo
+            text="Updated"
+            withIcon={true}
+            dateStr={metadata.updatedAt}
+            className="flex items-center gap-2 pt-1 text-white/40"
+          />
+        )}
         {metadata.tags.length > 0 && (
           <div className="flex items-center gap-2 pt-1 text-white/40">
             <Hashtag className="h-4 w-4 md:h-5 md:w-5" />
