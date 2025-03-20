@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import driveFont from "@components/font/driveFont";
-import { type Metadata } from "next";
+import { type Metadata, type Viewport } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -41,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`relative font-sans ${inter.variable} mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950 to-zinc-900 text-white`}
+        className={`relative font-sans ${inter.variable} dark mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950 to-zinc-900 text-white`}
       >
         <header className="static top-0 mx-auto flex w-full max-w-5xl justify-between pt-4 text-sm md:sticky md:text-base md:backdrop-blur">
           <Link
