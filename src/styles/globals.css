@@ -6,28 +6,6 @@
   -webkit-background-clip: text;
   background-clip: text;
 }
-input[type="checkbox"]:disabled {
-  /* Remove default appearance */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  /* Custom styling */
-  border: 2px solid #d600ff;
-  color: #ffffff;
-  background-color: initial;
-  border-radius: 4px;
-  position: relative;
-  cursor: default;
-}
-input[type="checkbox"]:disabled:checked::before {
-  content: "✓";
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: "#d600ff";
-}
 
 @layer base {
   :root {

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import driveFont from "@components/font/driveFont";
-import ImdbIcon from "../components/icons/ImdbIcon";
-import InstagramIcon from "../components/icons/InstagramIcon";
-import GithubIcon from "../components/icons/GithubIcon";
+import ImdbIcon from "../../components/icons/ImdbIcon";
+import InstagramIcon from "../../components/icons/InstagramIcon";
+import GithubIcon from "../../components/icons/GithubIcon";
 
 export default function HomePage() {
   return (

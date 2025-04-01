@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getBlogPosts } from "../../server/utils";
+import { getBlogPosts } from "../../../server/utils";
 import DateInfo from "@components/ClientDateInfo";
 import { type Metadata } from "next";
 

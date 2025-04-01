@@ -35,8 +35,8 @@ export const components = {
       <Link
         {...props}
         href={props.href}
-        rel="noopener noreferrer"
-        target="_blank"
+        rel={props.href.startsWith("/") ? "" : "noopener noreferrer"}
+        target={props.href.startsWith("/") ? "" : "_blank"}
       >
         {props.children}
         {isGithubLink && <GithubSVG className="ml-2 inline h-6 w-6" />}

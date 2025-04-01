@@ -39,7 +39,6 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: {
-  // eslint-disable-next-line next-route-params/enforce-route-params
   children: React.ReactNode;
 }) {
   return (

@@ -1,6 +1,6 @@
 import React, { type SVGProps } from "react";
 import { notFound } from "next/navigation";
-import { getBlogPost, getBlogPosts } from "../../../server/utils";
+import { getBlogPost, getBlogPosts } from "../../../../server/utils";
 import DateInfo from "@components/ClientDateInfo";
 import { type Metadata } from "next";
 import "~/styles/atom-one-dark.css";

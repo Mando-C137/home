@@ -70,6 +70,7 @@ export async function getBlogPost(slug: string) {
     if (err instanceof Error && "code" in err && err.code === "ENOENT") {
       return "notFound" as const;
     } else {
+      console.error(err);
       throw err;
     }
   }

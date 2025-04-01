@@ -22,13 +22,15 @@ const config = {
         destination: "https://bro-metrics.vercel.app",
         permanent: true,
       },
-      {
-        source: "/blog/life-calendar",
-        destination: "/life-calendar",
-        permanent: true,
-      },
+      // {
+      //   source: "/blog/life-calendar",
+      //   destination: "/life-calendar",
+      //   permanent: true,
+      // },
     ];
   },
+  transpilePackages:
+    process.env.NODE_ENV !== "production" ? ["next-mdx-remote"] : undefined,
 };
 
 export default config;
