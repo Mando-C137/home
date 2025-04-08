@@ -4,6 +4,7 @@ import { getBlogPost, getBlogPosts } from "../../../../server/utils";
 import DateInfo from "@components/ClientDateInfo";
 import { type Metadata } from "next";
 import "~/styles/atom-one-dark.css";
+import ProgressBar from "./ProgressBar";
 
 type Props = {
   params: Promise<{
@@ -48,6 +49,7 @@ export default async function Blog({
 
   return (
     <>
+      <ProgressBar />
       <Header metadata={post.metadata} />
       <section className="prose prose-invert mb-10 pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
         <article>{post.content}</article>
