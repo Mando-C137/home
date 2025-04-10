@@ -5,6 +5,7 @@ import DateInfo from "@components/ClientDateInfo";
 import { type Metadata } from "next";
 import "~/styles/atom-one-dark.css";
 import ProgressBar from "./ProgressBar";
+import TableOfContents from "./TableOfContents";
 
 type Props = {
   params: Promise<{
@@ -36,23 +37,13 @@ export default async function Blog({
   if (post === "notFound" || post.metadata.wip) {
     return notFound();
   }
-  if (post.metadata.wip) {
-    return (
-      <>
-        <Header metadata={post.metadata} />
-        <section className="prose prose-invert mb-10 pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
-          <article>Ich bin dran</article>
-        </section>
-      </>
-    );
-  }
-
   return (
     <>
+      <TableOfContents headings={post.headings} />
       <ProgressBar />
       <Header metadata={post.metadata} />
-      <section className="prose prose-invert mb-10 pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10">
-        <article>{post.content}</article>
+      <section className="prose prose-invert mb-10 pt-6 prose-headings:text-balance prose-p:text-pretty md:pt-10 md:[&_h1]:scroll-mt-16 md:[&_h2]:scroll-mt-16 md:[&_h3]:scroll-mt-16 md:[&_h4]:scroll-mt-16 md:[&_h5]:scroll-mt-16">
+        <article>{post.metadata.wip ? "Ich bin dran" : post.content}</article>
       </section>
     </>
   );

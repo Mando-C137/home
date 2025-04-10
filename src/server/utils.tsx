@@ -1,3 +1,4 @@
+import { visit } from "unist-util-visit";
 import fs from "fs/promises";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -24,7 +25,10 @@ async function getMDXFiles(dir: PathLike) {
 }
 
 async function readMDXFile(filePath: string) {
+  const headings: Heading[] = [];
+
   const rawContent = await fs.readFile(filePath, "utf-8");
+
   const { content, frontmatter: metadata } = await compileMDX<Metadata>({
     source: rawContent,
     components: {
@@ -33,12 +37,46 @@ async function readMDXFile(filePath: string) {
     options: {
       parseFrontmatter: true,
       mdxOptions: {
-        rehypePlugins: [{ plugins: [rehype, rehypeSlug] }],
+        rehypePlugins: [
+          {
+            plugins: [
+              rehype,
+              rehypeSlug,
+              () => {
+                return (tree) => {
+                  visit(tree, "element", (node: Element) => {
+                    if (/^h[1-6]$/.exec(node.tagName)) {
+                      const level = parseInt(node.tagName.substring(1));
+
+                      // Text aus den Kindern extrahieren
+                      let text = "";
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      visit(node, "text", (textNode: any) => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                        text += textNode.value;
+                      });
+
+                      // ID aus den Properties holen (von rehype-slug gesetzt)
+                      const id = (
+                        node as unknown as { properties?: { id: string } }
+                      ).properties?.id;
+
+                      if (id && text) {
+                        headings.push({ id, text, level });
+                      }
+                    }
+                  });
+                };
+              },
+            ],
+          },
+        ],
         remarkPlugins: [remarkGfm],
       },
     },
   });
-  return { content, metadata };
+
+  return { content, metadata, headings };
 }
 
 async function getMDXData(dir: string) {
@@ -52,7 +90,7 @@ async function getMDXData(dir: string) {
       content,
     };
   });
-  return await Promise.all(result);
+  return Promise.all(result);
 }
 
 export async function getBlogPosts() {
@@ -74,4 +112,32 @@ export async function getBlogPost(slug: string) {
       throw err;
     }
   }
+}
+
+export interface Heading {
+  id: string;
+  text: string;
+  level: number;
+}
+
+export function extractHeadings(content: string): Heading[] {
+  // Regex für Markdown-Überschriften (## Überschrift)
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+  const headings: Heading[] = [];
+
+  let match;
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1]?.length;
+    const text = match[2]?.trim();
+    if (level === undefined || text === undefined) continue; // Fehlerbehandlung
+    // ID wird von rehype-slug generiert (text in Kleinbuchstaben, Leerzeichen durch Bindestriche ersetzt)
+    const id = text
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]/g, "");
+
+    headings.push({ id, text, level });
+  }
+
+  return headings;
 }
