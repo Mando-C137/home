@@ -10,6 +10,11 @@ export default {
         cyberblue: "#00b8ff",
         cyberpink: "#d600ff",
         cyberviolet: "#bd00ff",
+        "github-bg": "#0d1117",
+        "github-text": "#c9d1d9",
+        "github-border": "#30363d",
+        "github-link": "#58a6ff",
+        "github-hover": "#161b22",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -17,8 +22,8 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "rgb( 33, 40, 48)",
+          foreground: "white",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

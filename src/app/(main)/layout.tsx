@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import driveFont from "@components/font/driveFont";
 import { type Metadata, type Viewport } from "next";
+import NavLinks from "./NavLinks";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,48 +46,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`relative font-sans ${inter.variable} dark mx-4 min-h-screen bg-current bg-gradient-to-b from-zinc-950 to-zinc-900 text-white`}
+        className={`relative font-sans ${inter.variable} dark min-h-screen bg-gray-900/45 text-white`}
       >
-        <header className="static top-0 mx-auto flex w-full max-w-5xl justify-between pt-4 text-sm md:sticky md:text-base md:backdrop-blur">
+        <header className="static top-0 mt-0 flex w-full flex-col justify-between gap-4 border-b border-gray-600 bg-[rgb(1,4,9)] pt-4 text-sm md:sticky md:text-base md:backdrop-blur">
           <Link
             href="/"
-            className={`${driveFont.className} ${driveFont.variable} hidden text-5xl text-cyberviolet md:block`}
+            className={`${driveFont.className} ${driveFont.variable} mb-4 ml-6 text-6xl text-cyberviolet group-hover:bg-white md:mb-0`}
           >
             <span className="text-cyberblue">P</span>H
           </Link>
-          <nav>
-            <ul className="flex flex-row justify-end gap-2 last:mr-6 md:gap-5 md:last:mr-0">
-              <li className="p-2">
-                <Link href="/" className="group transition duration-500">
-                  Home
-                  <span
-                    aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
-                  ></span>
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="/blog" className="group transition duration-500">
-                  Blog
-                  <span
-                    aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
-                  ></span>
-                </Link>
-              </li>
-              <li className="p-2">
-                <Link href="/" className="group transition duration-500">
-                  About
-                  <span
-                    aria-hidden={true}
-                    className="block h-0.5 max-w-0 bg-cyberblue transition-all duration-500 group-hover:max-w-full group-hover:bg-cyberviolet"
-                  ></span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
+
+          <Suspense>
+            <NavLinks />
+          </Suspense>
         </header>
-        <main className="mx-auto px-2 text-white md:max-w-3xl md:px-0">
+        <main className="mx-auto px-2 text-white md:max-w-7xl md:px-0">
           {children}
         </main>
       </body>
