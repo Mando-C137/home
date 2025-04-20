@@ -4,10 +4,11 @@ import ImdbIcon from "../../components/icons/ImdbIcon";
 import InstagramIcon from "../../components/icons/InstagramIcon";
 import GithubIcon from "../../components/icons/GithubIcon";
 import { getBlogPosts } from "~/server/utils";
+import { BlogActivity } from "./BlogActivity";
 
 const name = "Paul He";
 const username = "paulhe";
-const bio = "You’re not your brain — you’re its story.";
+const bio = "Wow, what a life!";
 
 export default async function HomePage() {
   const posts = (await getBlogPosts())
@@ -83,6 +84,7 @@ export default async function HomePage() {
               </div>
             </div>
           ))}
+          <BlogActivity />
         </div>
       </div>
     </div>
