@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import ImdbIcon from "../../components/icons/ImdbIcon";
-import InstagramIcon from "../../components/icons/InstagramIcon";
 import GithubIcon from "../../components/icons/GithubIcon";
 import { getBlogPosts } from "~/server/utils";
 import { BlogActivity } from "./BlogActivity";
+import LetterboxdIcon from "~/components/icons/LetterboxdIcon";
 
 const name = "Paul He";
 const username = "paulhe";
@@ -44,10 +44,12 @@ export default async function HomePage() {
             <div className="md:text-md mx-auto mt-4 max-w-[30ch] text-sm italic text-gray-400">
               {bio}
             </div>
-            <ul className="mt-4 flex flex-row items-center justify-center gap-2 text-sm md:flex-col md:items-start">
+            <ul className="mt-4 flex flex-row items-center justify-center gap-2 text-sm md:flex-col md:items-start md:gap-4">
               {Links.map(({ name, href, icon: Icon }) => (
                 <li key={name}>
                   <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href={href}
                     className="flex flex-row justify-start gap-2 hover:text-cyberblue hover:underline focus-visible:text-cyberblue md:items-center"
                   >
@@ -97,14 +99,19 @@ const Links = [
     href: "https://github.com/Mando-C137",
     icon: GithubIcon,
   },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/paulhe21/",
-    icon: InstagramIcon,
-  },
+  // {
+  //   name: "Instagram",
+  //   href: "https://www.instagram.com/paulhe21/",
+  //   icon: InstagramIcon,
+  // },
   {
     name: "IMDb",
     href: "https://www.imdb.com/name/nm0331516/?ref_=nv_sr_srsg_2_tt_2_nm_4_q_Ryan",
     icon: ImdbIcon,
+  },
+  {
+    name: "Letterboxd",
+    href: "https://letterboxd.com/paulspies",
+    icon: LetterboxdIcon,
   },
 ];
