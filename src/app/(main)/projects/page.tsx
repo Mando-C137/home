@@ -8,6 +8,11 @@ const projects: { name: string; description: string; href: string }[] = [
     description: "How far are you into your life?",
     href: "/life-calendar",
   },
+  {
+    name: "Star Wars Tier List",
+    description: "Ranking it",
+    href: "/tier-list",
+  },
 ];
 
 const Page = () => {

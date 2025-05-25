@@ -6,12 +6,19 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+  experimental: { reactCompiler: true },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "i.imgflip.com",
         port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        port: "",
+        pathname: "/t/p/**",
       },
     ],
   },

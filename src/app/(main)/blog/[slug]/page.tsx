@@ -1,4 +1,4 @@
-import React, { type SVGProps } from "react";
+import React from "react";
 import { notFound } from "next/navigation";
 import { getBlogPost, getBlogPosts } from "../../../../server/utils";
 import { type Metadata } from "next";
